@@ -1,0 +1,41 @@
+html, body {
+  min-height: 100%;
+}
+.ibalog-wrapper.select .ibalog-comment-wrapper{
+	background-color: #CC0066;
+	border-color: #CC0066;
+}
+.ibalog-wrapper.select .ibalog-comment-wrapper::before{
+	border-color: #CC0066;
+	background-color: #CC0066;
+}
+.ibalog-wrapper.select .ibalog-comment-wrapper::after {
+	border-color: #CC0066;
+	background-color: #CC0066;
+}
+#footer-fix-block{
+	position: fixed;
+	bottom: 0;
+	width:100%;
+    padding: 3px;
+	z-index:999;
+   	background-color:rgba(0,0,0,0.7);
+   	border-top:solid 1px #000;
+   	text-align: right;
+}
+#footer-fix-block-container{
+	padding-right:6px;
+}
+#footer-fix-block #footer-fix-block-container a{
+	background-color:#f0506e;
+	color:#fff;
+	border:none;
+}
+#footer-fix-block #footer-fix-block-container a:hover{
+	background-color:#EE395B;
+}
+
+#footer-text-block{
+	height: 50px;
+}
+

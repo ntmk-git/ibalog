@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+        <meta name="author" content="なつみか">
+        <meta name="description" content="定期更新ゲーム騒乱荊街のログをHTML形式で保存するツール">
+		<meta name="keywords" content="騒乱荊街,イバラシティ">
+        <title>IBALOG</title>
+        <link th:href="@{/ibalog/css/ukit/uikit.min.css}" href="css/uikit.min.css" rel="stylesheet" type="text/css">
+        <link th:href="@{/ibalog/css/ukit/uikit-rtl.min.css}" href="css/uikit-rtl.min.css" rel="stylesheet" type="text/css">
+        <link th:href="@{/ibalog/css/main.css}" href="main.css" rel="stylesheet" type="text/css">
+    </head>
+    <style th:replace="/common/log-style::style()"><!--common log style --></style>
+    <body>
+    	<div class="cotents-wrap">
+	        <div class="uk-container" >
+	        	<header>
+	                <h1 class="uk-heading-medium uk-text-center uk-text-muted">404 NOT FOUND</h1>
+                </header>
+				<footer th:replace="/common/footer-text::footer()">
+		            <p class="uk-text-small uk-text-muted">IBALOG v0.0.1  <span uk-icon="happy"></span> このツールは非公式ファンツールです。</p>
+		        </footer>
+			</div>
+        </div>
+		<script type="text/javascript" th:src="@{/ibalog/js/jquery/jquery-3.4.1.min.js}" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" th:src="@{/ibalog/js/ukit/uikit.min.js}" src="/js/uikit.min.js"></script>
+        <script type="text/javascript" th:src="@{/ibalog/js/ukit/uikit-icons.min.js}" src="/js/uikit-icons.min.js"></script>
+	</body>
+</html>

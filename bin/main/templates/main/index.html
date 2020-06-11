@@ -1,0 +1,250 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+        <meta name="author" content="なつみか">
+        <meta name="description" content="定期更新ゲーム騒乱荊街のログをHTML形式で保存するツール">
+		<meta name="keywords" content="騒乱荊街,イバラシティ">
+        <title>IBALOG</title>
+        <link th:href="@{/ibalog/css/ukit/uikit.min.css}" href="css/uikit.min.css" rel="stylesheet" type="text/css">
+        <link th:href="@{/ibalog/css/ukit/uikit-rtl.min.css}" href="css/uikit-rtl.min.css" rel="stylesheet" type="text/css">
+        <link th:href="@{/ibalog/css/main.css}" href="main.css" rel="stylesheet" type="text/css">
+        <style th:replace="/common/log-style::style()"><!--common log style --></style>
+    </head>
+    <body>
+    	<div class="cotents-wrap">
+	        <div class="uk-container">
+	            <header>
+	                <h1 class="uk-heading-medium uk-text-center uk-text-muted">IBALOG</h1>
+	                <div class="uk-margin uk-margin-auto uk-card uk-card-secondary uk-card-body uk-box-shadow-large">
+		                <form id="frm-place-select" uk-grid class="uk-grid-small uk-child-width-expand@s uk-text-center">
+		                    <div class="uk-width-1-3 uk-text-right">
+		                        <select id="select-log-get-method" class="uk-select uk-form-width-small" onChange="changeLogGetMethod()">
+		                            <option value="place">プレイス</option>
+		                            <option value="tree">ツリーURL</option>
+		                        </select>
+		                    </div>
+		                    <div id="form-row-place" class="uk-width-1-3 uk-text-left">
+		                        <div class="uk-inline uk-width-1-1">
+		                            <span class="uk-form-icon" uk-icon="icon:  location"></span>
+		                            <input class="uk-input" id="txt-place-no" type="text" placeholder="場所NOを入れてね">
+		                        </div>
+		                    </div>
+		                    <div id="form-row-tree"  class="uk-width-1-3 uk-text-left uk-hidden">
+		                        <div class="uk-inline uk-width-1-1">
+		                            <span class="uk-form-icon" uk-icon="icon:  world"></span>
+		                            <input class="uk-input" id="txt-tree-url" type="text" placeholder="ツリー表示時のURLを指定してね">
+		                        </div>
+		                    </div>
+		                    <div class="uk-width-1-3 uk-text-center">
+		                        <a id="btn-load-comment" class="uk-button uk-button-danger" href="javascript:void(0)">投稿データを取得</a>
+		                    </div>
+		                </form>
+	                </div>
+	            </header>
+	            <hr>
+	            <div>
+	            	<a href="javascript:void(0)" class="uk-button uk-button-danger uk-button-small" onclick="allCheckOnComment()">全選択</a>
+	            	<a href="javascript:void(0)" class="uk-button uk-button-danger uk-button-small" onclick="allCheckOffComment()">全選択解除</a>
+	            </div>
+	            <div id="article-list">
+				</div>
+				<div id="spnr-article-loading" class="uk-hidden uk-text-center">
+	                <div uk-spinner></div>
+	            </div>
+				<div id="add-load-comment" class="uk-hidden uk-text-center">
+                    <a id="btn-add-load-comment" class="uk-button uk-button-danger" href="javascript:void(0)">次の投稿データを取得</a>
+                </div>
+	            <footer th:replace="/common/footer-text::footer()">
+		            <p class="uk-text-small uk-text-muted">IBALOG v0.0.1  <span uk-icon="happy"></span> このツールは非公式ファンツールです。</p>
+		        </footer>
+            </div>
+        </div>
+        <div id="footer-fix-block" class="uk-hidden">
+        	<div id="footer-fix-block-container">
+        		<a id="btn-save" class="uk-button uk-button-default" uk-icon="icon: download"　href="javascript:void(0)">選択した投稿を保存する</a>
+        	</div>
+       	</div>
+        <script type="text/javascript" th:src="@{/ibalog/js/jquery/jquery-3.4.1.min.js}" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" th:src="@{/ibalog/js/ukit/uikit.min.js}" src="/js/uikit.min.js"></script>
+        <script type="text/javascript" th:src="@{/ibalog/js/ukit/uikit-icons.min.js}" src="/js/uikit-icons.min.js"></script>
+        <script type="text/javascript">
+        	var getLogByPUrl = '/ibalog/api/v1/log/place/{pNo}';
+        	var getLogByTUrl = '/ibalog/api/v1/log/tree/{pNo}/{tNo}';
+        	var logbasefileUrl = '/ibalog/main/save/';
+            var lastId = 1;
+            var page = 1;
+            function changeLogGetMethod(){
+            	var method = $("#select-log-get-method option:selected").val();
+            	if("place" == method){
+            		$("#form-row-place").removeClass("uk-hidden");
+            		$("#form-row-tree").addClass("uk-hidden");
+            	}else{
+            		$("#form-row-place").addClass("uk-hidden");
+            		$("#form-row-tree").removeClass("uk-hidden");
+            	}
+            }
+            function getParam(name, url) {
+            	if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            $("#btn-load-comment").click(function(e) {
+            	$("#article-list").empty();
+            	if(!$("#add-load-comment").hasClass("uk-hidden")){
+        			$("#add-load-comment").addClass("uk-hidden");
+        		}
+            	if(!$("#footer-fix-block").hasClass("uk-hidden")){
+        			$("#footer-fix-block").addClass("uk-hidden");
+        		}
+            	lastId = 1;
+            	page = 1;
+            	loadLog();
+            });
+            $("#btn-add-load-comment").click(function(e) {
+            	page = page + 1;
+            	loadLog();
+            });
+            function loadLog(){
+            	
+            	var sendUrl = "";
+            	var method = $("#select-log-get-method option:selected").val();
+            	if("place" == method){
+            		var pNo = $("#txt-place-no").val();
+            		sendUrl = getLogByPUrl.replace("{pNo}",pNo);
+            	}else{
+            		var pNo = getParam("p", $("#txt-tree-url").val());
+            		var tNo = getParam("sno", $("#txt-tree-url").val());
+            		sendUrl = getLogByTUrl.replace("{pNo}",pNo).replace("{tNo}",tNo);
+            	}
+            	
+            	$("#spnr-article-loading").removeClass("uk-hidden");
+            	if(!$("#add-load-comment").hasClass("uk-hidden")){
+            		$("#add-load-comment").addClass("uk-hidden");
+            	}
+            	$.ajax({
+            		url: sendUrl
+            		,type : "get"
+            		,cache: false
+            		,data: {
+            			page : page
+            		}
+            	})
+            	.done(function(data, textStatus, jqXHR) { 
+            		for(var i=0; i<data.length; i++) {
+            			
+            			var iconTag = "";
+            			if(data[i].icnb64){
+            				iconTag = '<img class="iblog-charactor-icon" src="data:image/png;base64,' + data[i].icnb64 + '" width="64" height="64" alt="">';
+            			}else{
+            				iconTag = '<div class="iblog-charactor-icon-no-image"></div>';
+            			}
+            			
+            			$("#article-list").append('<div class="ibalog-wrapper"><div class="ibalog-comment-wrapper"><div class="ibalog-comment" id="cmnt_' + lastId +'" onclick="checkComment(this)">'
+            			+ '<div class="ibalog-check-block"><input class="uk-checkbox" type="checkbox" checked></div>'
+						+ '<div class="ibalog-icon-block">'
+							+ iconTag
+						+ '</div>'
+						+ '<div class="ibalog-cmnt-block">'
+							+ '<div class="iblog-charactor-tree">' + data[i].tree + '</div>'
+							+ '<div class="iblog-charactor-name">' + data[i].cn + '</div>'
+							+ '<div class="iblog-charactor-comment">' + data[i].cmnt + '</div>'
+						+ '</div>'
+						+ '</div></div></div>');
+            			lastId = lastId + 1;
+            		}
+            		if(data.length == 50){
+            			$("#add-load-comment").removeClass("uk-hidden");
+            		}
+            		if($("#footer-fix-block").hasClass("uk-hidden")){
+            			$("#footer-fix-block").removeClass("uk-hidden");
+            		}
+            	})
+            	.fail(function(jqXHR, textStatus, errorThrown) { 
+            		alert("取得に失敗");
+            	})
+            	.always(function(){
+            		$("#spnr-article-loading").addClass("uk-hidden");
+            	});
+            	return;
+            }
+            function checkComment(tar){
+            	$cmntWrap = $(tar).parents(".ibalog-wrapper");
+            	if($cmntWrap.hasClass("select")){
+            		$cmntWrap.removeClass("select");
+            	}else{
+            		$cmntWrap.addClass("select");
+            	}
+            }
+            function allCheckOnComment(){
+            	$("#article-list .ibalog-wrapper").not(".select").addClass("select");
+            }
+            function allCheckOffComment(){
+            	$("#article-list .ibalog-wrapper.select").removeClass("select");
+            }
+            $("#btn-save").click(function(e) {
+            	
+            	var $selectCmnts = $(".ibalog-wrapper.select");
+            	
+            	if($selectCmnts.length == 0){
+            		alert("選択してね！");
+            		return false;
+            	}
+            	
+            	var addHtml = "";
+            	$($selectCmnts.get().reverse()).each(function(index, element){
+            		addHtml = addHtml + $(element).prop('outerHTML');
+            	});
+            	
+            	$.ajax({
+            		url: logbasefileUrl
+            		,type : "get"
+            		,cache: false
+            	})
+            	.done(function(data, textStatus, jqXHR) { 
+            		//なんかかっこ悪いけれど、いい方法が思い浮かばない
+            		var outHtml = data.replace("*addthis*",addHtml);
+            		const a = document.createElement('a');
+                	a.href = URL.createObjectURL(new Blob([outHtml], {type: 'text/plain'}));
+                	a.download = 'ibalog_'+ getCurrentTime() + '.html';
+
+                	a.style.display = 'none';
+                	document.body.appendChild(a);
+                	a.click();
+                	document.body.removeChild(a);
+            	})
+            	.fail(function(jqXHR, textStatus, errorThrown) { 
+            		alert("失敗");
+            	})
+            	.always(function(){
+            	});
+            	
+            	
+            });
+          	//現在時刻取得（yyyymmddhhmmss）
+            function getCurrentTime() {
+            	var now = new Date();
+            	var res = "" + now.getFullYear() + padZero(now.getMonth() + 1) + 
+            		padZero(now.getDate()) + padZero(now.getHours()) + 
+            		padZero(now.getMinutes()) + padZero(now.getSeconds());
+            	return res;
+            }
+            //先頭ゼロ付加
+            function padZero(num) {
+            	var result;
+            	if (num < 10) {
+            		result = "0" + num;
+            	} else {
+            		result = "" + num;
+            	}
+            	return result;
+            }
+        </script>
+    </body>
+</html>
