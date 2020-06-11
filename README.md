@@ -63,5 +63,5 @@ Herokuとかワンクリックでデプロイができるので便利です。
 
 ## Many Thanks!!
 
-- :rose:[騒乱荊街](http://lisge.com/ib)
+- :rose:[騒乱荊街](http://lisge.com/ib)　symalis様
 - :sparkles:[Heroku](https://jp.heroku.com/)
