@@ -26,7 +26,7 @@ public class NotLoginExceptionResolver implements HandlerExceptionResolver {
 		
 		LoginForm inputForm = new LoginForm();
 		mav.addObject("loginForm", inputForm);
-		mav.setViewName("/login/form.html");
+		mav.setViewName("login/form.html");
 	    
 	    return mav;
     
