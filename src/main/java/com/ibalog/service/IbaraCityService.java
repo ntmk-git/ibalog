@@ -1,4 +1,4 @@
-package com.ibalog.service;
+ï»¿package com.ibalog.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,34 +15,34 @@ import com.ibalog.api.dto.IbaraLog;
 import com.ibalog.util.DocumentConverter;
 
 /**
- * ŒtŠXƒT[ƒrƒX
+ * èŠè¡—ã‚µãƒ¼ãƒ“ã‚¹
  * @author ntmk
  */
 @Service
 public class IbaraCityService {
 	
-	/**æ“¾ƒy[ƒWƒTƒCƒY*/
+	/**å–å¾—ãƒšãƒ¼ã‚¸ã‚µã‚¤ã‚º*/
 	private final Integer PAGE_SIZE = 50;
 
 	/**
-	 * ƒƒOƒCƒ“URL
+	 * ãƒ­ã‚°ã‚¤ãƒ³URL
 	 */
 	private final String IBARA_CITY_LOGIN = "http://lisge.com/ib/login.php";
 	/**
-	 * ƒgƒbƒv‰æ–Ê
+	 * ãƒˆãƒƒãƒ—ç”»é¢
 	 */
 	private final String IBARA_CITY_TOP = "http://lisge.com/ib";
 	/**
-	 * êŠæ“¾URL
+	 * å ´æ‰€å–å¾—URL
 	 */
 	private final String IBARA_CITY_PLACE_URL = "http://lisge.com/ib/talk.php";
 	
 	/**
-	 * ƒƒOƒCƒ“î•ñCookies‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookiesã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * @param eno	eNo
-	 * @param pass	ƒpƒXƒ[ƒh
-	 * @param userAgent	userAgentî•ñ
-	 * @return@ƒƒOƒCƒ“î•ñCookies
+	 * @param pass	ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+	 * @param userAgent	userAgentæƒ…å ±
+	 * @returnã€€ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookies
 	 * @throws IOException
 	 */
 	public Map<String, String> getLoginCookies(Integer eno, String pass, String userAgent) throws IOException {
@@ -63,9 +63,9 @@ public class IbaraCityService {
 	}
 	
 	/**
-	 * ƒƒOƒCƒ“‚É¬Œ÷‚µ‚½‚©‚Ç‚¤‚©Šm”F‚·‚é
+	 * ãƒ­ã‚°ã‚¤ãƒ³ã«æˆåŠŸã—ãŸã‹ã©ã†ã‹ç¢ºèªã™ã‚‹
 	 * @param loginCookies
-	 * @param userAgent	userAgentî•ñ
+	 * @param userAgent	userAgentæƒ…å ±
 	 * @return
 	 * @throws IOException
 	 */
@@ -86,8 +86,8 @@ public class IbaraCityService {
 	}
 	
 	/**
-	 * PlaceNo‚ğw’è‚µ‚ÄLog‚ğæ“¾‚µ‚Ü‚·B
-	 * @param userAgent	userAgentî•ñ
+	 * PlaceNoã‚’æŒ‡å®šã—ã¦Logã‚’å–å¾—ã—ã¾ã™ã€‚
+	 * @param userAgent	userAgentæƒ…å ±
 	 * @return
 	 * @throws IOException 
 	 */
@@ -97,8 +97,8 @@ public class IbaraCityService {
 		        .fromHttpUrl(IBARA_CITY_PLACE_URL) 
 		        .queryParam("dt_p", placeNo)
 		        .queryParam("dt_sno", treeNo != null ? treeNo : "")
-		        .queryParam("dt_kz", PAGE_SIZE)   			//–‚Æ‚è‚ ‚¦‚¸ŒÅ’è
-		        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1)  //–‚Æ‚è‚ ‚¦‚¸ŒÅ’è
+		        .queryParam("dt_kz", PAGE_SIZE)   			//ï¼Šã¨ã‚Šã‚ãˆãšå›ºå®š
+		        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1)  //ï¼Šã¨ã‚Šã‚ãˆãšå›ºå®š
 		        .toUriString();
 
 		Document document = Jsoup.connect(url)

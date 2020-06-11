@@ -1,4 +1,4 @@
-package com.ibalog;
+ï»¿package com.ibalog;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,14 +7,14 @@ import org.springframework.web.servlet.handler.MappedInterceptor;
 import com.ibalog.controller.LoginInterceptor;
 
 /**
- * Webİ’èƒNƒ‰ƒX
+ * Webè¨­å®šã‚¯ãƒ©ã‚¹
  * @author ntmk
  */
 @Configuration
 public class WebApplicationConfiguration {
 	
 	/**
-	 * loginInterceptor‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·B
+	 * loginInterceptorã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™ã€‚
 	 * @return
 	 */
 	@Bean
@@ -23,12 +23,12 @@ public class WebApplicationConfiguration {
     }
 
 	/**
-	 * loginInterceptor‚ğDIƒRƒ“ƒeƒi‚É“o˜^‚µ‚Ü‚·B
+	 * loginInterceptorã‚’DIã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã—ã¾ã™ã€‚
 	 * @return loginInterceptor
 	 */
     @Bean
     public MappedInterceptor interceptor() {
-    	// ‘ÎÛF‚·‚×‚Ä
+    	// å¯¾è±¡ï¼šã™ã¹ã¦
         return new MappedInterceptor(new String[]{"/**"}, loginInterceptor());
     }
 }

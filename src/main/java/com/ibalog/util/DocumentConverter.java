@@ -1,4 +1,4 @@
-package com.ibalog.util;
+ï»¿package com.ibalog.util;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
@@ -25,10 +25,10 @@ import com.ibalog.api.dto.IbaraLog;
 public class DocumentConverter {
 	
 	/**
-	 * ƒƒOƒCƒ“‚µ‚Ä‚¢‚é‰æ–Ê‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
-	 * ¦‚Ğ‚Æ‚Ü‚¸@<td class="F5B">Jump</td> ‚ª‘¶İ‚µ‚Ä‚¢‚È‚¢‚±‚Æ‚ğğŒ‚Æ‚·‚é
+	 * ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ã‚‹ç”»é¢ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
+	 * â€»ã²ã¨ã¾ãšã€€<td class="F5B">Jump</td> ãŒå­˜åœ¨ã—ã¦ã„ãªã„ã“ã¨ã‚’æ¡ä»¶ã¨ã™ã‚‹
 	 * @param document
-	 * @return ƒƒOƒCƒ“’†FTrue^–¢ƒƒOƒCƒ“FFalse
+	 * @return ãƒ­ã‚°ã‚¤ãƒ³ä¸­ï¼šTrueï¼æœªãƒ­ã‚°ã‚¤ãƒ³ï¼šFalse
 	 */
 	public Boolean isLogin(Document document) {
 		
@@ -53,7 +53,7 @@ public class DocumentConverter {
 	}
 	
 	/**
-	 * Document‚ğIbaraLog‚Ö•ÏŠ·‚·‚é
+	 * Documentã‚’IbaraLogã¸å¤‰æ›ã™ã‚‹
 	 * @param document
 	 * @return
 	 */
@@ -98,7 +98,7 @@ public class DocumentConverter {
 					comment = td.html();
 				}
 				
-				//–‚Ğ‚Æ‚Ü‚¸‰æ‘œ‚ª‚ ‚ê‚ÎOK‚Æ‚·‚éI
+				//ï¼Šã²ã¨ã¾ãšç”»åƒãŒã‚ã‚Œã°OKã¨ã™ã‚‹ï¼
 				if(hasImage) {
 					IbaraLog newLog = new IbaraLog(characterName, targetCharacters, iconImageBase64, comment);
 					result.add(newLog);
@@ -110,9 +110,9 @@ public class DocumentConverter {
 	}
 	
 	/**
-	 * ‘ÎÛ‚ÌURL‚©‚ç‰æ‘œƒf[ƒ^‚ğæ“¾‚µABase64•¶š—ñ‚É•ÏŠ·‚·‚é
-	 * @param url ‰æ‘œURLi‚Æ‚è‚ ‚¦‚¸PNGŒÅ’èB‘¼‚àg‚¦‚½‚Á‚¯HHHj
-	 * @return Base64•¶š—ñ
+	 * å¯¾è±¡ã®URLã‹ã‚‰ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã—ã€Base64æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
+	 * @param url ç”»åƒURLï¼ˆã¨ã‚Šã‚ãˆãšPNGå›ºå®šã€‚ä»–ã‚‚ä½¿ãˆãŸã£ã‘ï¼Ÿï¼Ÿï¼Ÿï¼‰
+	 * @return Base64æ–‡å­—åˆ—
 	 */
 	private String getImgBase64FromUrl(String url)  {
 		
@@ -120,7 +120,7 @@ public class DocumentConverter {
 			return "";
 		}
 		
-		//Jsoup‚ğ—˜—p‚µ‚Ä‰æ‘œ‚ğæ“¾
+		//Jsoupã‚’åˆ©ç”¨ã—ã¦ç”»åƒã‚’å–å¾—
 		ByteArrayOutputStream baos = null;
 		BufferedOutputStream bos = null;
 		String base64Image = "";
@@ -145,7 +145,7 @@ public class DocumentConverter {
 			        bos.close();
 			        byte[] bImage = baos.toByteArray();
 			        
-			        //–ƒoƒCƒg”z—ñ¨BASE64‚Ö•ÏŠ·‚·‚é
+			        //ï¼Šãƒã‚¤ãƒˆé…åˆ—â†’BASE64ã¸å¤‰æ›ã™ã‚‹
 			        byte[] encoded = Base64.getEncoder().encode(bImage);
 			        base64Image = new String(encoded);
 				}

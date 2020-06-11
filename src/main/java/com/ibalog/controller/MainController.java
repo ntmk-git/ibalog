@@ -1,10 +1,10 @@
-package com.ibalog.controller;
+ï»¿package com.ibalog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * ƒƒCƒ“Controller
+ * ãƒ¡ã‚¤ãƒ³Controller
  * @author ntmk
  */
 @Controller
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
 	/**
-	 * ƒƒCƒ“‰æ–Ê‚ğ•\¦‚µ‚Ü‚·
+	 * ãƒ¡ã‚¤ãƒ³ç”»é¢ã‚’è¡¨ç¤ºã—ã¾ã™
 	 * @return
 	 */
 	@RequestMapping("/")
@@ -21,7 +21,7 @@ public class MainController {
     }
 	
 	/**
-	 * •Û‘¶—pƒeƒ“ƒvƒŒ[ƒgHTML‚ğ•Ô‚µ‚Ü‚·
+	 * ä¿å­˜ç”¨ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆHTMLã‚’è¿”ã—ã¾ã™
 	 * @return
 	 */
 	@RequestMapping("/save")

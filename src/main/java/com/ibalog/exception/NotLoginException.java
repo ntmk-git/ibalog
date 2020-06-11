@@ -1,7 +1,7 @@
-package com.ibalog.exception;
+ï»¿package com.ibalog.exception;
 
 /**
- * –¢ƒƒOƒCƒ“Exception
+ * æœªãƒ­ã‚°ã‚¤ãƒ³Exception
  * @author ntmk
  */
 public class NotLoginException extends Exception {

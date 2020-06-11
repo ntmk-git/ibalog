@@ -1,4 +1,4 @@
-package com.ibalog.annotation;
+ï»¿package com.ibalog.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -6,8 +6,8 @@ import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
 
 /**
- * loginInterceptor—p
- * ƒƒOƒCƒ“‚ª•s—v‚ÈMethod–Úˆó—pƒAƒmƒe[ƒVƒ‡ƒ“
+ * loginInterceptorç”¨
+ * ãƒ­ã‚°ã‚¤ãƒ³ãŒä¸è¦ãªMethodç›®å°ç”¨ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
  * @author ntmk
  */
 @Retention(RetentionPolicy.RUNTIME)

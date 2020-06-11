@@ -1,4 +1,4 @@
-package com.ibalog.api.dto;
+ï»¿package com.ibalog.api.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 import com.ibalog.util.NumberUtils;
 
 /**
- * ƒƒOƒCƒ“‰æ–Ê—pƒtƒH[ƒ€
+ * ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ç”¨ãƒ•ã‚©ãƒ¼ãƒ 
  * @author ntmk
  */
 public class LoginForm {
@@ -14,14 +14,14 @@ public class LoginForm {
 	/**
 	 * eno
 	 */
-	@NotNull(message = "ENO‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B")
-	@Pattern(regexp = "^[0-9]+", message = "ENO‚Í”š‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B") 
+	@NotNull(message = "ENOã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚")
+	@Pattern(regexp = "^[0-9]+", message = "ENOã¯æ•°å­—ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚") 
 	private String eno;
 	
 	/**
-	 * ƒpƒXƒ[ƒh
+	 * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 */
-	@NotNull(message = "ƒpƒXƒ[ƒh‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B")
+	@NotNull(message = "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚")
 	private String password;
 	
 	
@@ -29,15 +29,15 @@ public class LoginForm {
 	// Getter / Setter
 	//--------------------------
 	/**
-	 * eno‚Éw’è‚³‚ê‚½•¶š—ñ‚ğIntegerŒ^‚É•ÏŠ·‚µ‚Ä–ß‚µ‚Ü‚·B
-	 * @return IntegerŒ^eno
+	 * enoã«æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’Integerå‹ã«å¤‰æ›ã—ã¦æˆ»ã—ã¾ã™ã€‚
+	 * @return Integerå‹eno
 	 */
 	public Integer getParseENo() {
 		return NumberUtils.tryParseInt(this.eno);
 	}
 
 	/**
-	 * eno‚Éw’è‚³‚ê‚½•¶š—ñ‚ğæ“¾‚µ‚Ü‚·
+	 * enoã«æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’å–å¾—ã—ã¾ã™
 	 * @return eno
 	 */
 	public String getEno() {
@@ -45,24 +45,24 @@ public class LoginForm {
 	}
 
 	/**
-	 * eno‚É•¶š—ñ‚ğw’è‚µ‚Ü‚·B
-	 * @param eno‚Éİ’è‚µ‚½‚¢•¶š—ñ
+	 * enoã«æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @param enoã«è¨­å®šã—ãŸã„æ–‡å­—åˆ—
 	 */
 	public void setEno(String eno) {
 		this.eno = eno;
 	}
 
 	/**
-	 * ƒpƒXƒ[ƒh‚Éw’è‚³‚ê‚½•¶š—ñ‚ğæ“¾‚µ‚Ü‚·
-	 * @return ƒpƒXƒ[ƒh
+	 * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’å–å¾—ã—ã¾ã™
+	 * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * ƒpƒXƒ[ƒh‚É•¶š—ñ‚ğw’è‚µ‚Ü‚·
-	 * @param password ƒpƒXƒ[ƒh‚Éİ’è‚µ‚½‚¢•¶š—ñ
+	 * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã«æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¾ã™
+	 * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã«è¨­å®šã—ãŸã„æ–‡å­—åˆ—
 	 */
 	public void setPassword(String password) {
 		this.password = password;

@@ -1,4 +1,4 @@
-package com.ibalog.controller;
+ï»¿package com.ibalog.controller;
 
 import java.io.IOException;
 import java.util.Map;
@@ -23,7 +23,7 @@ import com.ibalog.service.IbaraCityService;
 import com.ibalog.util.SystemLogger;
 
 /**
- * ƒƒOƒCƒ“ƒtƒH[ƒ€Controller
+ * ãƒ­ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ¼ãƒ Controller
  * @author ntmk
  */
 @Controller
@@ -33,19 +33,19 @@ public class LoginController {
 	private static final SystemLogger logger = new SystemLogger(LoginController.class);
 	
 	/**
-	 * ƒƒOƒCƒ“î•ñ
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±
 	 */
 	@Autowired 
 	private LoginInfo loginInfo;
 	
 	/**
-	 * ŒtŠXƒT[ƒrƒX
+	 * èŠè¡—ã‚µãƒ¼ãƒ“ã‚¹
 	 */
 	@Autowired
 	private IbaraCityService ibaraCityService;
 
 	/**
-	 * ƒƒOƒCƒ“ƒtƒH[ƒ€‚ğ•\¦
+	 * ãƒ­ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ¼ãƒ ã‚’è¡¨ç¤º
 	 * @param mav
 	 * @param model
 	 * @return
@@ -57,7 +57,7 @@ public class LoginController {
     }
 	
 	/**
-	 * ƒCƒoƒ‰ƒVƒeƒB‚Ö‚ÌƒƒOƒCƒ“Às
+	 * ã‚¤ãƒãƒ©ã‚·ãƒ†ã‚£ã¸ã®ãƒ­ã‚°ã‚¤ãƒ³å®Ÿè¡Œ
 	 * @param request
 	 * @param inputForm
 	 * @param bindingResult
@@ -72,7 +72,7 @@ public class LoginController {
 			, @RequestHeader("User-Agent") String userAgent
 			, ModelAndView mav, Model model) {
 		
-		//“ü—Íƒ`ƒFƒbƒN
+		//å…¥åŠ›ãƒã‚§ãƒƒã‚¯
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("failedLogin", true);
 			return "login/form";	
@@ -80,16 +80,16 @@ public class LoginController {
 		
 		Map<String, String> cookies;
 		try {
-			// ƒƒOƒCƒ“î•ñ‚ÌCookie‚ğæ“¾‚µ‚És‚­
+			// ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±ã®Cookieã‚’å–å¾—ã—ã«è¡Œã
 			cookies = ibaraCityService.getLoginCookies(inputForm.getParseENo(), inputForm.getPassword(), userAgent);
 			if(ibaraCityService.checkLogin(cookies, userAgent)){
-				// ƒƒOƒCƒ“‚ª¬Œ÷‚µ‚Ä‚¢‚½‚çASession‚É•Û‚·‚é
+				// ãƒ­ã‚°ã‚¤ãƒ³ãŒæˆåŠŸã—ã¦ã„ãŸã‚‰ã€Sessionã«ä¿æŒã™ã‚‹
 				loginInfo.setLoginCookies(cookies);
 				return "redirect:/main/";
 			}
 			
 		} catch (IOException e) {
-			//ƒƒOƒCƒ“¸”s
+			//ãƒ­ã‚°ã‚¤ãƒ³å¤±æ•—
 			logger.error(e);
 		}
 		

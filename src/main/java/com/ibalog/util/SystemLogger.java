@@ -1,10 +1,10 @@
-package com.ibalog.util;
+ï»¿package com.ibalog.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * LoggerƒNƒ‰ƒX
+ * Loggerã‚¯ãƒ©ã‚¹
  * @author ntmk
  */
 public class SystemLogger {
@@ -12,7 +12,7 @@ public class SystemLogger {
 	private Logger logger;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * @param   cls 
      * @see org.slf4j.LoggerFactory#getLogger(Class)
      */
@@ -21,16 +21,16 @@ public class SystemLogger {
     }
     
     /**
-     * ƒGƒ‰[o—Í
-     * @param   msg ƒƒOo—Í“à—e
+     * ã‚¨ãƒ©ãƒ¼å‡ºåŠ›
+     * @param   msg ãƒ­ã‚°å‡ºåŠ›å†…å®¹
      * @see org.slf4j.Logger#error(String)
      */
     public void error(String msg) {
         logger.error(msg);
     }
     /**
-     * ƒGƒ‰[o—Í
-     * @param   e ”­¶‚µ‚½Exception
+     * ã‚¨ãƒ©ãƒ¼å‡ºåŠ›
+     * @param   e ç™ºç”Ÿã—ãŸException
      * @see org.slf4j.Logger#error(String)
      */
     public void error(Exception e) {
@@ -40,9 +40,9 @@ public class SystemLogger {
     }
 
     /**
-     * ƒCƒ“ƒtƒHƒ[ƒVƒ‡ƒ“o—Í
+     * ã‚¤ãƒ³ãƒ•ã‚©ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡ºåŠ›
      * 
-     * @param   msg ƒƒOo—Í“à—e
+     * @param   msg ãƒ­ã‚°å‡ºåŠ›å†…å®¹
      * @see org.slf4j.Logger#error(String)
      */
     public void info(String msg) {
@@ -50,9 +50,9 @@ public class SystemLogger {
     }
 
     /**
-     * ƒfƒoƒbƒOo—Í
+     * ãƒ‡ãƒãƒƒã‚°å‡ºåŠ›
      * 
-     * @param   msg ƒƒOo—Í“à—e
+     * @param   msg ãƒ­ã‚°å‡ºåŠ›å†…å®¹
      * @see org.slf4j.Logger#error(String)
      */
     public void debug(String msg) {
@@ -61,9 +61,9 @@ public class SystemLogger {
     }
     
     /**
-     * ƒfƒoƒbƒOo—Í
+     * ãƒ‡ãƒãƒƒã‚°å‡ºåŠ›
      * 
-     * @param   e ”­¶‚µ‚½Exception
+     * @param   e ç™ºç”Ÿã—ãŸException
      * @see org.slf4j.Logger#error(String)
      */
     public void debug(Exception e) {

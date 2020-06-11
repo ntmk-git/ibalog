@@ -1,4 +1,4 @@
-package com.ibalog.exception;
+ï»¿package com.ibalog.exception;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,14 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ibalog.api.dto.LoginForm;
 
 /**
- * NotLoginException”­¶‚Ìˆ—
+ * NotLoginExceptionç™ºç”Ÿæ™‚ã®å‡¦ç†
  * @author ntmk
  */
 @Component
 public class NotLoginExceptionResolver implements HandlerExceptionResolver {
 	
 	/**
-	 * NotLoginException‚ª”­¶‚·‚é‚ÆAƒƒOƒCƒ“ƒtƒH[ƒ€‰æ–Ê‚ğ•\¦‚·‚éB
+	 * NotLoginExceptionãŒç™ºç”Ÿã™ã‚‹ã¨ã€ãƒ­ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ¼ãƒ ç”»é¢ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 	 */
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {

@@ -1,4 +1,4 @@
-package com.ibalog.api.dto;
+ï»¿package com.ibalog.api.dto;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
- * ƒCƒoƒ‰ƒVƒeƒBƒƒOƒCƒ“î•ñ
- * ‚±‚Ìî•ñ‚ÍSession‚É‹L‰¯‚³‚¹‚Ü‚·B
+ * ã‚¤ãƒãƒ©ã‚·ãƒ†ã‚£ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±
+ * ã“ã®æƒ…å ±ã¯Sessionã«è¨˜æ†¶ã•ã›ã¾ã™ã€‚
  * @author ntmk
  */
 @Component
@@ -19,12 +19,12 @@ public class LoginInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * ƒƒOƒCƒ“‚É‹L‰¯‚µ‚Ä‚¨‚­Cookie
+	 * ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«è¨˜æ†¶ã—ã¦ãŠãCookie
 	 */
 	private Map<String, String> loginCookies;
 	
 	/**
-	 * ƒƒOƒCƒ“‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ì”»’èBCookie•Û‚µ‚Ä‚¢‚ê‚ÎOK‚Æ‚·‚éB
+	 * ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®åˆ¤å®šã€‚Cookieä¿æŒã—ã¦ã„ã‚Œã°OKã¨ã™ã‚‹ã€‚
 	 * @return
 	 */
 	public boolean isLogin() {
@@ -32,16 +32,16 @@ public class LoginInfo implements Serializable {
 	}
 
 	/**
-	 * ƒƒOƒCƒ“î•ñCookie‚Ì’l‚ğæ“¾‚µ‚Ü‚·
-	 * @return ƒƒOƒCƒ“î•ñCookie
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookieã®å€¤ã‚’å–å¾—ã—ã¾ã™
+	 * @return ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookie
 	 */
 	public Map<String, String> getLoginCookies() {
 		return loginCookies;
 	}
 
 	/**
-	 * ƒƒOƒCƒ“î•ñCookie‚É’l‚ğİ’è‚µ‚Ü‚·
-	 * @param ƒƒOƒCƒ“î•ñCookie
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookieã«å€¤ã‚’è¨­å®šã—ã¾ã™
+	 * @param ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookie
 	 */
 	public void setLoginCookies(Map<String, String> loginCookies) {
 		this.loginCookies = loginCookies;

@@ -1,15 +1,15 @@
-package com.ibalog.util;
+ï»¿package com.ibalog.util;
 
 /**
- * ”šŒn@•Ö—˜ƒNƒ‰ƒX
+ * æ•°å­—ç³»ã€€ä¾¿åˆ©ã‚¯ãƒ©ã‚¹
  * @author ntmk
  *
  */
 public class NumberUtils {
 
 	/**
-	 * •¶š—ñ‚ğInteger‚É•ÏŠ·‚µ‚Ä•Ô‚µ‚Ü‚·B
-	 * •ÏŠ·‚Å‚«‚È‚¢’l‚ğˆø”‚Éw’è‚µ‚½ê‡‚ÍNULL‚ğ•Ô‚µ‚Ü‚·B
+	 * æ–‡å­—åˆ—ã‚’Integerã«å¤‰æ›ã—ã¦è¿”ã—ã¾ã™ã€‚
+	 * å¤‰æ›ã§ããªã„å€¤ã‚’å¼•æ•°ã«æŒ‡å®šã—ãŸå ´åˆã¯NULLã‚’è¿”ã—ã¾ã™ã€‚
 	 * @param value
 	 * @return
 	 */

@@ -1,4 +1,4 @@
-package com.ibalog.controller;
+ï»¿package com.ibalog.controller;
 
 import java.lang.reflect.Method;
 
@@ -17,30 +17,30 @@ import com.ibalog.api.dto.LoginInfo;
 import com.ibalog.exception.NotLoginException;
 
 /**
- * ƒƒOƒCƒ“ƒ`ƒFƒbƒNHandlerInterceptor
+ * ãƒ­ã‚°ã‚¤ãƒ³ãƒã‚§ãƒƒã‚¯HandlerInterceptor
  * @author ntmk
  */
 public class LoginInterceptor implements HandlerInterceptor {
 	
 	/**
-	 * ƒƒOƒCƒ“î•ñ
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±
 	 */
 	@Autowired 
 	private LoginInfo loginInfo;
 	
 	/**
-	 * Šeˆ—‚ÌÅ‰‚ÉƒƒOƒCƒ“î•ñCookie‚ğ•Û‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©”»’è‚·‚é
-	 * ‚µ‚Ä‚¢‚È‚¯‚ê‚ÎNotLoginException‚ğ”­¶‚³‚¹‚éB
+	 * å„å‡¦ç†ã®æœ€åˆã«ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±Cookieã‚’ä¿æŒã—ã¦ã„ã‚‹ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹
+	 * ã—ã¦ã„ãªã‘ã‚Œã°NotLoginExceptionã‚’ç™ºç”Ÿã•ã›ã‚‹ã€‚
 	 */
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         
-		//Ã“IƒŠƒ\[ƒX‚Ìê‡‚Í”FØ•s—v
+		//é™çš„ãƒªã‚½ãƒ¼ã‚¹ã®å ´åˆã¯èªè¨¼ä¸è¦
         if (handler instanceof ResourceHttpRequestHandler) {
               return true;
         }
         
-        //NonAuth•t‚«‚Ìƒƒ\ƒbƒh‚Í–³‹‚·‚é
+        //NonAuthä»˜ãã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ç„¡è¦–ã™ã‚‹
 		HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
         NonAuth annotation = AnnotationUtils.findAnnotation(method, NonAuth.class);

@@ -1,9 +1,9 @@
-package com.ibalog.api.dto;
+ï»¿package com.ibalog.api.dto;
 
 import java.io.Serializable;
 
 /**
- * æ“¾‚µ‚½êŠƒƒO‚ğŠi”[‚·‚é
+ * å–å¾—ã—ãŸå ´æ‰€ãƒ­ã‚°ã‚’æ ¼ç´ã™ã‚‹
  * @author ntmk
  */
 public class IbaraLog implements Serializable{
@@ -11,31 +11,31 @@ public class IbaraLog implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * ”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼
+	 * ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å
 	 */
 	private String cn;
 	
 	/**
-	 * ”­Œ¾æƒLƒƒƒ‰ƒNƒ^[–¼@Tree
+	 * ç™ºè¨€å…ˆã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åã€€Tree
 	 */
 	private String tree;
 	
 	/**
-	 * ”­Œ¾ƒAƒCƒRƒ“(Base64‰»)
+	 * ç™ºè¨€ã‚¢ã‚¤ã‚³ãƒ³(Base64åŒ–)
 	 */
 	private String icnb64;
 	
 	/**
-	 * ”­Œ¾“à—eiƒRƒƒ“ƒgj
+	 * ç™ºè¨€å†…å®¹ï¼ˆã‚³ãƒ¡ãƒ³ãƒˆï¼‰
 	 */
 	private String cmnt;
 	
 	/**
-	 * •K—vƒf[ƒ^‚ğİ’è‚µ‚ÄAƒƒOƒf[ƒ^‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·
-	 * @param characterName		”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼
-	 * @param targetCharacters	”­Œ¾‘ÎÛTree•¶š—ñ
-	 * @param iconImageBase64	”­Œ¾ƒAƒCƒRƒ“Base64
-	 * @param comment			ƒRƒƒ“ƒg
+	 * å¿…è¦ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¦ã€ãƒ­ã‚°ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™
+	 * @param characterName		ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å
+	 * @param targetCharacters	ç™ºè¨€å¯¾è±¡Treeæ–‡å­—åˆ—
+	 * @param iconImageBase64	ç™ºè¨€ã‚¢ã‚¤ã‚³ãƒ³Base64
+	 * @param comment			ã‚³ãƒ¡ãƒ³ãƒˆ
 	 */
 	public IbaraLog(String characterName, String targetCharacters, String iconImageBase64, String comment) {
 		this.cn = characterName;
@@ -48,23 +48,23 @@ public class IbaraLog implements Serializable{
 	// Getter / Setter
 	//--------------------------
 	/**
-	 * ”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼‚Ì’l‚ğæ“¾‚µ‚Ü‚·
-	 * @return ”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼
+	 * ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åã®å€¤ã‚’å–å¾—ã—ã¾ã™
+	 * @return ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å
 	 */
 	public String getCn() {
 		return cn;
 	}
 
 	/**
-	 * ”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼‚É’l‚ğİ’è‚µ‚Ü‚·
-	 * @param cn ”­Œ¾ƒLƒƒƒ‰ƒNƒ^[–¼
+	 * ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åã«å€¤ã‚’è¨­å®šã—ã¾ã™
+	 * @param cn ç™ºè¨€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å
 	 */
 	public void setCn(String cn) {
 		this.cn = cn;
 	}
 
 	/**
-	 * ”­Œ¾æƒLƒƒƒ‰ƒNƒ^[–¼@Tree•¶š—ñ‚Ì’l‚ğæ“¾‚µ‚Ü‚·
+	 * ç™ºè¨€å…ˆã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åã€€Treeæ–‡å­—åˆ—ã®å€¤ã‚’å–å¾—ã—ã¾ã™
 	 * @return
 	 */
 	public String getTree() {
@@ -72,7 +72,7 @@ public class IbaraLog implements Serializable{
 	}
 
 	/**
-	 * ”­Œ¾æƒLƒƒƒ‰ƒNƒ^[–¼@Tree•¶š—ñ‚É’l‚ğİ’è‚µ‚Ü‚·
+	 * ç™ºè¨€å…ˆã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åã€€Treeæ–‡å­—åˆ—ã«å€¤ã‚’è¨­å®šã—ã¾ã™
 	 * @param tree
 	 */
 	public void setTree(String tree) {
@@ -80,32 +80,32 @@ public class IbaraLog implements Serializable{
 	}
 
 	/**
-	 * ƒAƒCƒRƒ“Base64•¶š—ñ‚Ì’l‚ğæ“¾‚µ‚Ü‚·
-	 * @return ƒAƒCƒRƒ“Base64•¶š—ñ
+	 * ã‚¢ã‚¤ã‚³ãƒ³Base64æ–‡å­—åˆ—ã®å€¤ã‚’å–å¾—ã—ã¾ã™
+	 * @return ã‚¢ã‚¤ã‚³ãƒ³Base64æ–‡å­—åˆ—
 	 */
 	public String getIcnb64() {
 		return icnb64;
 	}
 
 	/**
-	 * ƒAƒCƒRƒ“Base64•¶š—ñ‚É’l‚ğİ’è‚µ‚Ü‚·
-	 * @param icnb64 ƒAƒCƒRƒ“Base64•¶š—ñ
+	 * ã‚¢ã‚¤ã‚³ãƒ³Base64æ–‡å­—åˆ—ã«å€¤ã‚’è¨­å®šã—ã¾ã™
+	 * @param icnb64 ã‚¢ã‚¤ã‚³ãƒ³Base64æ–‡å­—åˆ—
 	 */
 	public void setIcnb64(String icnb64) {
 		this.icnb64 = icnb64;
 	}
 
 	/**
-	 * ƒRƒƒ“ƒg–{•¶‚Ì’l‚ğæ“¾‚µ‚Ü‚·
-	 * @return ƒRƒƒ“ƒg–{•¶
+	 * ã‚³ãƒ¡ãƒ³ãƒˆæœ¬æ–‡ã®å€¤ã‚’å–å¾—ã—ã¾ã™
+	 * @return ã‚³ãƒ¡ãƒ³ãƒˆæœ¬æ–‡
 	 */
 	public String getCmnt() {
 		return cmnt;
 	}
 
 	/**
-	 * ƒRƒƒ“ƒg–{•¶‚É’l‚ğİ’è‚µ‚Ü‚·
-	 * @param cmnt ƒRƒƒ“ƒg–{•¶
+	 * ã‚³ãƒ¡ãƒ³ãƒˆæœ¬æ–‡ã«å€¤ã‚’è¨­å®šã—ã¾ã™
+	 * @param cmnt ã‚³ãƒ¡ãƒ³ãƒˆæœ¬æ–‡
 	 */
 	public void setCmnt(String cmnt) {
 		this.cmnt = cmnt;

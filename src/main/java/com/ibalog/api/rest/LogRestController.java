@@ -1,4 +1,4 @@
-package com.ibalog.api.rest;
+ï»¿package com.ibalog.api.rest;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +16,7 @@ import com.ibalog.service.IbaraCityService;
 import com.ibalog.util.SystemLogger;
 
 /**
- * IBALOG APIiƒCƒoƒ‰ƒVƒeƒBƒƒOŠÖŒWj
+ * IBALOG APIï¼ˆã‚¤ãƒãƒ©ã‚·ãƒ†ã‚£ãƒ­ã‚°é–¢ä¿‚ï¼‰
  * @author ntmk
  */
 @RestController
@@ -26,22 +26,22 @@ public class LogRestController {
 	private static final SystemLogger logger = new SystemLogger(LogRestController.class);
 	
 	/**
-	 * ƒƒOƒCƒ“î•ñ
+	 * ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±
 	 */
 	@Autowired 
 	private LoginInfo loginInfo;
 	
 	/**
-	 * ŒtŠXƒT[ƒrƒX
+	 * èŠè¡—ã‚µãƒ¼ãƒ“ã‚¹
 	 */
 	@Autowired
 	private IbaraCityService ibaraCityService;
 
 	/**
-	 * êŠNO‚©‚çƒƒO‚ğæ“¾‚µ‚Ü‚·
-	 * @param placeNo	êŠNO
-	 * @param page		ƒy[ƒW”Ô†i1n‚Ü‚èj
-	 * @return ƒCƒoƒ‰ƒVƒeƒBƒƒOjson
+	 * å ´æ‰€NOã‹ã‚‰ãƒ­ã‚°ã‚’å–å¾—ã—ã¾ã™
+	 * @param placeNo	å ´æ‰€NO
+	 * @param page		ãƒšãƒ¼ã‚¸ç•ªå·ï¼ˆ1å§‹ã¾ã‚Šï¼‰
+	 * @return ã‚¤ãƒãƒ©ã‚·ãƒ†ã‚£ãƒ­ã‚°json
 	 */
 	@RequestMapping("place/{placeNo:[0-9]+}")
     public List<IbaraLog> getLogsByPlace(@PathVariable Integer placeNo
@@ -60,11 +60,11 @@ public class LogRestController {
 	}
 	
 	/**
-	 * ”­Œ¾ƒcƒŠ[‚©‚çƒƒO‚ğæ“¾‚µ‚Ü‚·
-	 * @param placeNo	êŠNO
-	 * @param treeNo	ƒcƒŠ[NOiSNOj
-	 * @param page		ƒy[ƒW”Ô†i1n‚Ü‚èj
-	 * @return ƒCƒoƒ‰ƒVƒeƒBƒƒOjson
+	 * ç™ºè¨€ãƒ„ãƒªãƒ¼ã‹ã‚‰ãƒ­ã‚°ã‚’å–å¾—ã—ã¾ã™
+	 * @param placeNo	å ´æ‰€NO
+	 * @param treeNo	ãƒ„ãƒªãƒ¼NOï¼ˆSNOï¼‰
+	 * @param page		ãƒšãƒ¼ã‚¸ç•ªå·ï¼ˆ1å§‹ã¾ã‚Šï¼‰
+	 * @return ã‚¤ãƒãƒ©ã‚·ãƒ†ã‚£ãƒ­ã‚°json
 	 */
 	@RequestMapping("tree/{placeNo:[0-9]+}/{treeNo:[0-9]+}")
     public List<IbaraLog> getLogsByTree(@PathVariable Integer placeNo, @PathVariable Integer treeNo
