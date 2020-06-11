@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>common log style template</title>
+<style type="text/css" th:fragment="style()">
+<!--
+html,body{
+	background-color: #070707;
+}
+.ibalog-wrapper{
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.ibalog-comment-wrapper{
+	--slope: calc(1/100);
+	--border-width: 2px;
+	background-color: #9B8648;
+	max-width: 900px;
+	padding: 2px;
+	border-style: solid solid none solid;
+	border-width: var(--border-width);
+	border-color: #9B8648;
+	position: relative;
+}
+.ibalog-comment-wrapper::before{
+	content: '';
+	position: absolute;
+	left: calc(-1 * var(--border-width));
+	right: calc(-1 * var(--border-width));
+	top: calc(-1 * var(--border-width));
+	border-width: var(--border-width);
+	border-style: solid solid none solid;
+	border-color: #9B8648;
+	background-color: #9B8648;
+	z-index: 1;
+	padding-bottom: calc(var(--slope) * 100% + var(--border-width));
+	transform-origin: left;
+	transform: matrix(1, calc(-1 * var(--slope)), 0, 1, 0, 0);
+}
+.ibalog-comment-wrapper::after {
+	content: '';
+	position: absolute;
+	left: calc(-1 * var(--border-width));
+	right: calc(-1 * var(--border-width));
+	bottom: calc(-1 * var(--border-width));
+	border-width: var(--border-width);
+	border-style: none solid solid solid;
+	border-color: #9B8648;
+	background-color: #9B8648;
+	z-index: 1;
+	padding-top: calc(var(--slope) * 100% + var(--border-width));
+	transform-origin: right;
+	transform: matrix(1, calc(-1 * var(--slope)), 0, 1, 0, 0);
+}
+.ibalog-comment{
+	background-color: #070707;
+	font-family:Meiryo,sans-serif;
+	color:#999966;
+	padding:6px;
+	display: flex;
+	position:relative;
+	z-index: 2;
+}
+.ibalog-check-block{
+	text-align:center;
+	display:none;
+}
+.ibalog-icon-block{
+	width:100px;
+	text-align:center;
+	padding:12px 0;
+}
+.ibalog-cmnt-block{
+}
+.iblog-charactor-icon{
+}
+.iblog-charactor-icon-no-image{
+	width:60px;
+	height:60px;
+}
+.iblog-charactor-tree{
+	font-size: 11px;
+	color:#CC0066;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.iblog-charactor-name{
+	font-size: 15px;
+	color:#999933;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.iblog-charactor-comment{
+	font-size: 15px;
+	color:#999933;
+	padding-top:3px;
+	padding-bottom:3px;
+	line-height:120%;
+	max-width:800px;
+}
+.iblog-charactor-comment .F1{
+	font-size: 11px;
+}
+.iblog-charactor-comment .F2{
+	font-size: 13px;
+}
+.iblog-charactor-comment .F4{
+	font-size: 18px;
+}
+.iblog-charactor-comment .F5{
+	font-size: 21px;
+}
+.iblog-charactor-comment .F6{
+	font-size: 26px;
+}
+.iblog-charactor-comment .F7{
+	font-size: 36px;
+}
+.iblog-charactor-comment b{
+	font-weight: bold;
+}
+.iblog-charactor-comment a{
+	color: #CC0066;
+}
+.iblog-charactor-comment a:visited{
+	color:#990099;
+}
+.iblog-charactor-comment a:hover{
+	color: #CC0066;
+}
+-->
+</style>
+</head>
+<body></body>
+</html>
