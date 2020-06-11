@@ -95,6 +95,22 @@ public class DocumentConverter {
 						cNameEle.get(0).remove();
 					}
 					
+					//dice処理
+					Elements diceEles = td.select("span.D6");
+					for(Element dice : diceEles) {
+						String diceHtmlStr = dice.html();
+						
+						diceHtmlStr = diceHtmlStr.replace("<span class=\"R4\">1</span>", "<i class=\"dice dice-1\">&nbsp;</i>");
+						diceHtmlStr = diceHtmlStr.replace("2", "<i class=\"dice dice-2\">&nbsp;</i>");
+						diceHtmlStr = diceHtmlStr.replace("3", "<i class=\"dice dice-3\">&nbsp;</i>");
+						diceHtmlStr = diceHtmlStr.replace("4", "<i class=\"dice dice-4\">&nbsp;</i>");
+						diceHtmlStr = diceHtmlStr.replace("5", "<i class=\"dice dice-5\">&nbsp;</i>");
+						diceHtmlStr = diceHtmlStr.replace("6", "<i class=\"dice dice-6\">&nbsp;</i>");
+						
+						dice.after(diceHtmlStr);
+						dice.remove();
+					}
+					
 					comment = td.html();
 				}
 				
