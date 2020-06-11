@@ -1,4 +1,4 @@
-﻿package com.ibalog.util;
+package com.ibalog.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

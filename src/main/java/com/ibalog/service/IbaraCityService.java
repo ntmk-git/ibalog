@@ -1,4 +1,4 @@
-﻿package com.ibalog.service;
+package com.ibalog.service;
 
 import java.io.IOException;
 import java.util.List;

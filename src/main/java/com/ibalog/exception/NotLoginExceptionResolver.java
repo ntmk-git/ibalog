@@ -1,4 +1,4 @@
-﻿package com.ibalog.exception;
+package com.ibalog.exception;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

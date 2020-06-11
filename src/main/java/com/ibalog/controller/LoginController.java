@@ -1,4 +1,4 @@
-﻿package com.ibalog.controller;
+package com.ibalog.controller;
 
 import java.io.IOException;
 import java.util.Map;

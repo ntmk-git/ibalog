@@ -1,4 +1,4 @@
-﻿package com.ibalog.api.dto;
+package com.ibalog.api.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

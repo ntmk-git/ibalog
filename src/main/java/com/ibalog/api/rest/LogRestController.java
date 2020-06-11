@@ -1,4 +1,4 @@
-﻿package com.ibalog.api.rest;
+package com.ibalog.api.rest;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-﻿package com.ibalog.util;
+package com.ibalog.util;
 
 /**
  * 数字系　便利クラス

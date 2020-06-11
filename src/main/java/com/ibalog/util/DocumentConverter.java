@@ -1,4 +1,4 @@
-﻿package com.ibalog.util;
+package com.ibalog.util;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;

@@ -1,4 +1,4 @@
-﻿package com.ibalog.exception;
+package com.ibalog.exception;
 
 /**
  * 未ログインException
