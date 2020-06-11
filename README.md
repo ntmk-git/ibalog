@@ -8,11 +8,3 @@ ibalogは荊街騒乱でのログをHTML形式で保存するツールです。
 荊街騒乱のアップデートでうまく動かなくなる可能性もあります。
 自己責任でご使用ください。
 
-### Usage
-
-### License
-
-ibalog is [MIT licensed](./LICENSE).
-
-### ManyThanks
-

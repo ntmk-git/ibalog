@@ -5,6 +5,7 @@ build/
 !gradle/wrapper/gradle-wrapper.properties
 !**/src/main/**
 !**/src/test/**
+bin/
 
 ### STS ###
 .apt_generated

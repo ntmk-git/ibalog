@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ibalog.annotation.NonAuth;
-import com.ibalog.api.dto.AppProperties;
 import com.ibalog.api.dto.LoginForm;
 import com.ibalog.api.dto.LoginInfo;
 import com.ibalog.service.IbaraCityService;
@@ -38,12 +37,6 @@ public class LoginController {
 	 */
 	@Autowired 
 	private LoginInfo loginInfo;
-	
-	/**
-	 * アプリケーション設定情報
-	 */
-	@Autowired 
-	private AppProperties appProperties;
 	
 	/**
 	 * 荊街サービス
@@ -92,7 +85,7 @@ public class LoginController {
 			if(ibaraCityService.checkLogin(cookies, userAgent)){
 				// ログインが成功していたら、Sessionに保持する
 				loginInfo.setLoginCookies(cookies);
-				return String.format("redirect:%s/main/", appProperties.getServletPath());
+				return "redirect:/main/";
 			}
 			
 		} catch (IOException e) {
