@@ -16,7 +16,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.ibalog.api.dto.IbaraLog;
+import com.ibalog.dto.IbaraLog;
 
 /**
  * jsoup doc to IbaraLog List
@@ -112,6 +112,10 @@ public class DocumentConverter {
 					}
 					
 					comment = td.html();
+					// 最初に出てくる<br>タグと空リンクを削除する
+					comment = comment.replaceFirst("<br>", "");
+					//<a href=\"k/now/r1516.html\" target=\"_blank\"></a>
+					comment = comment.replaceFirst("(<a href=\"k/now/)[a-z]?[0-9]+(.html\" target=\"_blank\"></a>)", "");
 				}
 				
 				//＊ひとまず画像があればOKとする！

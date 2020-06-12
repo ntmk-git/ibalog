@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ibalog.annotation.NonAuth;
-import com.ibalog.api.dto.LoginForm;
-import com.ibalog.api.dto.LoginInfo;
+import com.ibalog.dto.LoginForm;
+import com.ibalog.dto.LoginInfo;
 import com.ibalog.service.IbaraCityService;
 import com.ibalog.util.SystemLogger;
 

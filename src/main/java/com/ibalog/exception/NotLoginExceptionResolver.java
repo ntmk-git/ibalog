@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ibalog.api.dto.LoginForm;
+import com.ibalog.dto.LoginForm;
 
 /**
  * NotLoginException発生時の処理

@@ -11,7 +11,7 @@ import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.ibalog.api.dto.IbaraLog;
+import com.ibalog.dto.IbaraLog;
 import com.ibalog.util.DocumentConverter;
 
 /**

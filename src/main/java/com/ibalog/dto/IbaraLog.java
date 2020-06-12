@@ -1,4 +1,4 @@
-package com.ibalog.api.dto;
+package com.ibalog.dto;
 
 import java.io.Serializable;
 

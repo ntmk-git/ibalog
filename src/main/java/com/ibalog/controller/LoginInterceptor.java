@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import com.ibalog.annotation.NonAuth;
-import com.ibalog.api.dto.LoginInfo;
+import com.ibalog.dto.LoginInfo;
 import com.ibalog.exception.NotLoginException;
 
 /**

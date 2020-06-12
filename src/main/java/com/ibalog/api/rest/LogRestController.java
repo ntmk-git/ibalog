@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibalog.api.dto.IbaraLog;
-import com.ibalog.api.dto.LoginInfo;
+import com.ibalog.dto.IbaraLog;
+import com.ibalog.dto.LoginInfo;
 import com.ibalog.service.IbaraCityService;
 import com.ibalog.util.SystemLogger;
 
