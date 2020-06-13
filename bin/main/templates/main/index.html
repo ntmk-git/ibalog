@@ -147,14 +147,19 @@
             			}
             			
             			$("#article-list").append('<div class="ibalog-wrapper"><div class="ibalog-comment-wrapper"><div class="ibalog-comment" id="cmnt_' + lastId +'" onclick="checkComment(this)">'
-            			+ '<div class="ibalog-check-block"><input class="uk-checkbox" type="checkbox" checked></div>'
-						+ '<div class="ibalog-icon-block">'
-							+ iconTag
+            			+ '<div class="ibalog-body-block">'
+	          				+ '<div class="ibalog-icon-block">'
+								+ iconTag
+							+ '</div>'
+							+ '<div class="ibalog-cmnt-block">'
+								+ '<div class="iblog-charactor-tree">' + data[i].tree + '</div>'
+								+ '<div class="iblog-charactor-name">' + data[i].cn + '</div>'
+								+ '<div class="iblog-charactor-comment">' + data[i].cmnt + '</div>'
+							+ '</div>'
 						+ '</div>'
-						+ '<div class="ibalog-cmnt-block">'
-							+ '<div class="iblog-charactor-tree">' + data[i].tree + '</div>'
-							+ '<div class="iblog-charactor-name">' + data[i].cn + '</div>'
-							+ '<div class="iblog-charactor-comment">' + data[i].cmnt + '</div>'
+						+ '<div class="ibalog-foot-block">'
+							+ '<span class="iblog-place-name">' + data[i].pname + '</span>'
+							+ '<span class="iblog-post-time">' + data[i].ptime + '</span>'
 						+ '</div>'
 						+ '</div></div></div>');
             			lastId = lastId + 1;

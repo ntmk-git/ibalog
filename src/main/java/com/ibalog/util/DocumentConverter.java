@@ -64,65 +64,78 @@ public class DocumentConverter {
 		for(Element tbl : tableList) {
 			Elements trList = tbl.select("tr");
 			
+			Boolean hasImage = false;
+			String iconImageBase64 = "";
+			String characterName = "";
+			String targetCharacters = "";
+			String comment = "";
+			String postTime = "";
+			String placeName = "";
+			
 			for(Element tr : trList) {
-				Boolean hasImage = false;
-				String iconImageBase64 = "";
-				String characterName = "";
-				String targetCharacters = "";
-				String comment = "";
 				
-				Elements tdList = tr.select("td");
-				for(Element td : tdList) {
-					
-					Elements imgEles = td.select("img");
-					if(imgEles.size() > 0) {
-						if(imgEles.get(0).nodeName().equals("img")) {
-							hasImage = true;
-							iconImageBase64 = getImgBase64FromUrl(imgEles.get(0).attr("src"));
-							imgEles.get(0).remove();
+				if("TOP".equals(tr.attr("valign"))) {
+					Elements tdList = tr.select("td");
+					for(Element td : tdList) {
+						
+						Elements imgEles = td.select("img");
+						if(imgEles.size() > 0) {
+							if(imgEles.get(0).nodeName().equals("img")) {
+								hasImage = true;
+								iconImageBase64 = getImgBase64FromUrl(imgEles.get(0).attr("src"));
+								imgEles.get(0).remove();
+							}
+						}
+						
+						Elements treeEle = td.select("a.F1");
+						if(treeEle.size() > 0) {
+							targetCharacters = treeEle.get(0).html();
+							treeEle.get(0).remove();
+						}
+
+						Elements cNameEle = td.select("span.Y3");
+						if(cNameEle.size() > 0) {
+							characterName = cNameEle.get(0).html();
+							cNameEle.get(0).remove();
+						}
+						
+						//dice処理
+						Elements diceEles = td.select("span.D6");
+						for(Element dice : diceEles) {
+							String diceHtmlStr = dice.html();
+							
+							diceHtmlStr = diceHtmlStr.replace("<span class=\"R4\">1</span>", "<i class=\"dice dice-1\">&nbsp;</i>");
+							diceHtmlStr = diceHtmlStr.replace("2", "<i class=\"dice dice-2\">&nbsp;</i>");
+							diceHtmlStr = diceHtmlStr.replace("3", "<i class=\"dice dice-3\">&nbsp;</i>");
+							diceHtmlStr = diceHtmlStr.replace("4", "<i class=\"dice dice-4\">&nbsp;</i>");
+							diceHtmlStr = diceHtmlStr.replace("5", "<i class=\"dice dice-5\">&nbsp;</i>");
+							diceHtmlStr = diceHtmlStr.replace("6", "<i class=\"dice dice-6\">&nbsp;</i>");
+							
+							dice.after(diceHtmlStr);
+							dice.remove();
+						}
+						
+						comment = td.html();
+						// 最初に出てくる<br>タグと空リンクを削除する
+						comment = comment.replaceFirst("<br>", "");
+						//<a href=\"k/now/r1516.html\" target=\"_blank\"></a>
+						comment = comment.replaceFirst("(<a href=\"k/now/)[a-z]?[0-9]+(.html\" target=\"_blank\"></a>)", "");
+					}
+				}else if("BOTTOM".equals(tr.attr("valign"))) {
+					Elements tdList = tr.select("td");
+					if(tdList.size() > 0) {
+						postTime = tdList.get(0).ownText();
+						Elements placeSpan = tdList.get(0).select("span.B1");
+						if(placeSpan.size() > 0) {
+							placeName = placeSpan.get(0).ownText();
 						}
 					}
-					
-					Elements treeEle = td.select("a.F1");
-					if(treeEle.size() > 0) {
-						targetCharacters = treeEle.get(0).html();
-						treeEle.get(0).remove();
-					}
-
-					Elements cNameEle = td.select("span.Y3");
-					if(cNameEle.size() > 0) {
-						characterName = cNameEle.get(0).html();
-						cNameEle.get(0).remove();
-					}
-					
-					//dice処理
-					Elements diceEles = td.select("span.D6");
-					for(Element dice : diceEles) {
-						String diceHtmlStr = dice.html();
-						
-						diceHtmlStr = diceHtmlStr.replace("<span class=\"R4\">1</span>", "<i class=\"dice dice-1\">&nbsp;</i>");
-						diceHtmlStr = diceHtmlStr.replace("2", "<i class=\"dice dice-2\">&nbsp;</i>");
-						diceHtmlStr = diceHtmlStr.replace("3", "<i class=\"dice dice-3\">&nbsp;</i>");
-						diceHtmlStr = diceHtmlStr.replace("4", "<i class=\"dice dice-4\">&nbsp;</i>");
-						diceHtmlStr = diceHtmlStr.replace("5", "<i class=\"dice dice-5\">&nbsp;</i>");
-						diceHtmlStr = diceHtmlStr.replace("6", "<i class=\"dice dice-6\">&nbsp;</i>");
-						
-						dice.after(diceHtmlStr);
-						dice.remove();
-					}
-					
-					comment = td.html();
-					// 最初に出てくる<br>タグと空リンクを削除する
-					comment = comment.replaceFirst("<br>", "");
-					//<a href=\"k/now/r1516.html\" target=\"_blank\"></a>
-					comment = comment.replaceFirst("(<a href=\"k/now/)[a-z]?[0-9]+(.html\" target=\"_blank\"></a>)", "");
 				}
-				
-				//＊ひとまず画像があればOKとする！
-				if(hasImage) {
-					IbaraLog newLog = new IbaraLog(characterName, targetCharacters, iconImageBase64, comment);
-					result.add(newLog);
-				}
+			}
+			//＊ひとまず画像があればOKとする！
+			if(hasImage) {
+				IbaraLog newLog = new IbaraLog(characterName, targetCharacters, iconImageBase64, postTime, placeName, comment);
+				result.add(newLog);
 			}
 		}
 		
