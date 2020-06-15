@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibalog.dto.IbaraLog;
+import com.ibalog.dto.LogResult;
 import com.ibalog.dto.LoginInfo;
+import com.ibalog.exception.SecretLogException;
 import com.ibalog.service.IbaraCityService;
 import com.ibalog.util.SystemLogger;
 
@@ -44,17 +46,20 @@ public class LogRestController {
 	 * @return イバラシティログjson
 	 */
 	@RequestMapping("place/{placeNo:[0-9]+}")
-    public List<IbaraLog> getLogsByPlace(@PathVariable Integer placeNo
+    public LogResult getLogsByPlace(@PathVariable Integer placeNo
     		, @RequestParam(name = "page", defaultValue = "1") Integer page
+    		, @RequestParam(name = "swords", defaultValue = "") String swords
     		, @RequestHeader("User-Agent") String userAgent) {
 		
         try {
-			return ibaraCityService.getLogs(placeNo, null, page, loginInfo.getLoginCookies(), userAgent);
+			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, null, swords, page, loginInfo.getLoginCookies(), userAgent));
 			
 		} catch (IOException e) {
 			
 			logger.error(e);
 			
+		} catch (SecretLogException e) {
+			return new LogResult(LogResult.Result.SecretError);
 		}
 		return null;
 	}
@@ -67,16 +72,19 @@ public class LogRestController {
 	 * @return イバラシティログjson
 	 */
 	@RequestMapping("tree/{placeNo:[0-9]+}/{treeNo:[0-9]+}")
-    public List<IbaraLog> getLogsByTree(@PathVariable Integer placeNo, @PathVariable Integer treeNo
+    public LogResult getLogsByTree(@PathVariable Integer placeNo, @PathVariable Integer treeNo
     		, @RequestParam(name = "page", defaultValue = "1") Integer page
+    		, @RequestParam(name = "swords", defaultValue = "") String swords
     		, @RequestHeader("User-Agent") String userAgent) {
 		try {
-			return ibaraCityService.getLogs(placeNo, treeNo, page, loginInfo.getLoginCookies(), userAgent);
+			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, treeNo, swords, page, loginInfo.getLoginCookies(), userAgent));
 			
 		} catch (IOException e) {
 			
 			logger.error(e);
 			
+		} catch (SecretLogException e) {
+			return new LogResult(LogResult.Result.SecretError);
 		}
 		return null;
 	}

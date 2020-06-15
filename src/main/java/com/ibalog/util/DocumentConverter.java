@@ -17,6 +17,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.ibalog.dto.IbaraLog;
+import com.ibalog.exception.SecretLogException;
 
 /**
  * jsoup doc to IbaraLog List
@@ -56,8 +57,14 @@ public class DocumentConverter {
 	 * DocumentをIbaraLogへ変換する
 	 * @param document
 	 * @return
+	 * @throws SecretLogException 
 	 */
-	public List<IbaraLog> docToIbaraLogList(Document document){
+	public List<IbaraLog> docToIbaraLogList(Document document) throws SecretLogException{
+		
+		if(isSecretLog(document)) {
+			throw new SecretLogException();
+		}
+		
 		List<IbaraLog> result = new ArrayList<IbaraLog>();
 		
 		Elements tableList = document.body().select("table.SE0");
@@ -103,7 +110,7 @@ public class DocumentConverter {
 						Elements diceEles = td.select("span.D6");
 						for(Element dice : diceEles) {
 							String diceHtmlStr = dice.html();
-							
+							//dice　Webフォント対応
 							diceHtmlStr = diceHtmlStr.replace("<span class=\"R4\">1</span>", "<i class=\"dice dice-1\">&nbsp;</i>");
 							diceHtmlStr = diceHtmlStr.replace("2", "<i class=\"dice dice-2\">&nbsp;</i>");
 							diceHtmlStr = diceHtmlStr.replace("3", "<i class=\"dice dice-3\">&nbsp;</i>");
@@ -140,6 +147,25 @@ public class DocumentConverter {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * 対象ドキュメントが秘密のプレイスであるかどうかを判定します。
+	 * @param document
+	 * @return
+	 * @throws SecretLogException 秘密のプレイスである場合に発生するエラー
+	 */
+	public Boolean isSecretLog(Document document){
+		
+		Elements element = document.body().select(".MXM");
+		for(Element ele : element) {
+			Elements sLabel1 = ele.select(".L4");
+			if(!sLabel1.isEmpty() && "！　合言葉の必要なプレイスです　！".equals(sLabel1.get(0).ownText())) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	/**

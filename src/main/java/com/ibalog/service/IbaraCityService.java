@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.ibalog.dto.IbaraLog;
+import com.ibalog.exception.SecretLogException;
 import com.ibalog.util.DocumentConverter;
 
 /**
@@ -86,25 +87,47 @@ public class IbaraCityService {
 	}
 	
 	/**
-	 * PlaceNoを指定してLogを取得します。
+	 * 条件を指定してLogを取得します。
+	 * @param placeNo 場所NO
+	 * @param treeNo  ツリー親記事NO
+	 * @param secretWord 合言葉
 	 * @param userAgent	userAgent情報
-	 * @return
+	 * @return イバラシティLog情報
 	 * @throws IOException 
+	 * @throws SecretLogException 
 	 */
-	public List<IbaraLog> getLogs(Integer placeNo, Integer treeNo, Integer page, Map<String, String> loginCookies, String userAgent) throws IOException{
+	public List<IbaraLog> getLogs(Integer placeNo, Integer treeNo, String secretWord, Integer page, Map<String, String> loginCookies, String userAgent) throws IOException, SecretLogException{
 		
-		String url = UriComponentsBuilder
-		        .fromHttpUrl(IBARA_CITY_PLACE_URL) 
-		        .queryParam("dt_p", placeNo)
-		        .queryParam("dt_sno", treeNo != null ? treeNo : "")
-		        .queryParam("dt_kz", PAGE_SIZE)   			//＊とりあえず固定
-		        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1)  //＊とりあえず固定
-		        .toUriString();
+		Document document = null;
+		if(secretWord != null && !secretWord.isEmpty()) {
+			String url = UriComponentsBuilder
+			        .fromHttpUrl(IBARA_CITY_PLACE_URL) 
+			        .queryParam("dt_p", placeNo)
+			        .queryParam("dt_sno", treeNo != null ? treeNo : "")
+			        .queryParam("dt_kz", PAGE_SIZE) 
+			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1) 
+			        .toUriString();
+			
+			document = Jsoup.connect(url)
+					.userAgent(userAgent)
+					.cookies(loginCookies)
+					.data("dt_ps", secretWord)
+					.post();
+		}else {
+			String url = UriComponentsBuilder
+			        .fromHttpUrl(IBARA_CITY_PLACE_URL) 
+			        .queryParam("dt_p", placeNo)
+			        .queryParam("dt_sno", treeNo != null ? treeNo : "")
+			        .queryParam("dt_kz", PAGE_SIZE) 
+			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1) 
+			        .toUriString();
 
-		Document document = Jsoup.connect(url)
-				.userAgent(userAgent)
-				.cookies(loginCookies)
-				.get();
+			document = Jsoup.connect(url)
+					.userAgent(userAgent)
+					.cookies(loginCookies)
+					.get();
+			
+		}
 		
 		DocumentConverter dc = new DocumentConverter();
 
