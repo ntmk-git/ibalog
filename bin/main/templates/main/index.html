@@ -24,6 +24,7 @@
 		                    <div class="uk-width-1-4@l uk-column-1-1@s">
 		                        <select id="select-log-get-method" class="uk-select" onChange="changeLogGetMethod()">
 		                            <option value="place">プレイス</option>
+		                            <option value="placeUrl">プレイスURL</option>
 		                            <option value="tree">ツリーURL</option>
 		                        </select>
 		                    </div>
@@ -31,6 +32,12 @@
 		                        <div class="uk-inline uk-width-1-1">
 		                            <span class="uk-form-icon" uk-icon="icon:  location"></span>
 		                            <input class="uk-input" id="txt-place-no" type="text" placeholder="場所NOを入れてね">
+		                        </div>
+		                    </div>
+		                    <div id="form-row-place-url"  class="uk-width-1-2@l uk-column-1-1@s uk-hidden">
+		                        <div class="uk-inline uk-width-1-1">
+		                            <span class="uk-form-icon" uk-icon="icon:  world"></span>
+		                            <input class="uk-input" id="txt-place-url" type="text" placeholder="場所表示時のURLを指定してね">
 		                        </div>
 		                    </div>
 		                    <div id="form-row-tree"  class="uk-width-1-2@l uk-column-1-1@s uk-hidden">
@@ -80,15 +87,24 @@
             var lastId = 1;
             var page = 1;
             var swords = null;
+            var preMethod = "place";
             function changeLogGetMethod(){
             	var method = $("#select-log-get-method option:selected").val();
             	if("place" == method){
             		$("#form-row-place").removeClass("uk-hidden");
-            		$("#form-row-tree").addClass("uk-hidden");
+            	}else if("placeUrl" == method){
+            		$("#form-row-place-url").removeClass("uk-hidden");
             	}else{
-            		$("#form-row-place").addClass("uk-hidden");
             		$("#form-row-tree").removeClass("uk-hidden");
             	}
+            	if("place" == preMethod){
+            		$("#form-row-place").addClass("uk-hidden");
+            	}else if("placeUrl" == preMethod){
+            		$("#form-row-place-url").addClass("uk-hidden");
+            	}else{
+            		$("#form-row-tree").addClass("uk-hidden");
+            	}
+            	preMethod = method
             }
             function getParam(name, url) {
             	if (!url) url = window.location.href;
@@ -119,14 +135,36 @@
             function loadLog(){
             	
             	var sendUrl = "";
+            	var sNo = 1;
             	var method = $("#select-log-get-method option:selected").val();
+            	// get param from form
             	if("place" == method){
             		var pNo = $("#txt-place-no").val();
             		sendUrl = getLogByPUrl.replace("{pNo}",pNo);
+            	}else if("placeUrl" == method){
+            		var pNo = getParam("p", $("#txt-place-url").val());
+            		if(!pNo){
+            			pNo = getParam("dt_p", $("#txt-place-url").val());
+            		}
+            		var tsNo = getParam("dt_st", $("#txt-place-url").val());
+            		if(tsNo){
+            			sNo = Number(tsNo);
+            		}
+            		sendUrl = getLogByPUrl.replace("{pNo}",pNo);
             	}else{
             		var pNo = getParam("p", $("#txt-tree-url").val());
+            		if(!pNo){
+            			pNo = getParam("dt_p", $("#txt-tree-url").val());
+            		}
             		var tNo = getParam("sno", $("#txt-tree-url").val());
+            		if(!tNo){
+            			tNo = getParam("dt_sno", $("#txt-tree-url").val());
+            		}
             		sendUrl = getLogByTUrl.replace("{pNo}",pNo).replace("{tNo}",tNo);
+            		var tsNo = getParam("dt_st", $("#txt-tree-url").val());
+            		if(tsNo){
+            			sNo = Number(tsNo);
+            		}
             	}
             	
             	$("#spnr-article-loading").removeClass("uk-hidden");
@@ -137,10 +175,10 @@
             	var sData = null;
             	var sType = null;
             	if(swords){
-            		sData = {page : page, swords : swords};
+            		sData = {page : page, swords : swords, sno : sno};
             		sType = "post";
             	}else{
-            		sData = {page : page};
+            		sData = {page : page, sno : sNo};
             		sType = "get";
             	}
             	$.ajax({

@@ -90,13 +90,14 @@ public class IbaraCityService {
 	 * 条件を指定してLogを取得します。
 	 * @param placeNo 場所NO
 	 * @param treeNo  ツリー親記事NO
+	 * @parm startNo	表示開始位置
 	 * @param secretWord 合言葉
 	 * @param userAgent	userAgent情報
 	 * @return イバラシティLog情報
 	 * @throws IOException 
 	 * @throws SecretLogException 
 	 */
-	public List<IbaraLog> getLogs(Integer placeNo, Integer treeNo, String secretWord, Integer page, Map<String, String> loginCookies, String userAgent) throws IOException, SecretLogException{
+	public List<IbaraLog> getLogs(Integer placeNo, Integer treeNo, Integer startNo, String secretWord, Integer page, Map<String, String> loginCookies, String userAgent) throws IOException, SecretLogException{
 		
 		Document document = null;
 		if(secretWord != null && !secretWord.isEmpty()) {
@@ -105,7 +106,7 @@ public class IbaraCityService {
 			        .queryParam("dt_p", placeNo)
 			        .queryParam("dt_sno", treeNo != null ? treeNo : "")
 			        .queryParam("dt_kz", PAGE_SIZE) 
-			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1) 
+			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + startNo) 
 			        .toUriString();
 			
 			document = Jsoup.connect(url)
@@ -119,7 +120,7 @@ public class IbaraCityService {
 			        .queryParam("dt_p", placeNo)
 			        .queryParam("dt_sno", treeNo != null ? treeNo : "")
 			        .queryParam("dt_kz", PAGE_SIZE) 
-			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + 1) 
+			        .queryParam("dt_st", PAGE_SIZE * (page - 1) + startNo) 
 			        .toUriString();
 
 			document = Jsoup.connect(url)

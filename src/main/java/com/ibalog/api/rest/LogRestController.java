@@ -49,10 +49,11 @@ public class LogRestController {
     public LogResult getLogsByPlace(@PathVariable Integer placeNo
     		, @RequestParam(name = "page", defaultValue = "1") Integer page
     		, @RequestParam(name = "swords", defaultValue = "") String swords
+    		, @RequestParam(name = "sno", defaultValue = "1") Integer sno
     		, @RequestHeader("User-Agent") String userAgent) {
 		
         try {
-			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, null, swords, page, loginInfo.getLoginCookies(), userAgent));
+			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, null, sno , swords, page, loginInfo.getLoginCookies(), userAgent));
 			
 		} catch (IOException e) {
 			
@@ -75,9 +76,10 @@ public class LogRestController {
     public LogResult getLogsByTree(@PathVariable Integer placeNo, @PathVariable Integer treeNo
     		, @RequestParam(name = "page", defaultValue = "1") Integer page
     		, @RequestParam(name = "swords", defaultValue = "") String swords
+    		, @RequestParam(name = "sno", defaultValue = "1") Integer sno
     		, @RequestHeader("User-Agent") String userAgent) {
 		try {
-			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, treeNo, swords, page, loginInfo.getLoginCookies(), userAgent));
+			return new LogResult(LogResult.Result.Success, ibaraCityService.getLogs(placeNo, treeNo, sno , swords, page, loginInfo.getLoginCookies(), userAgent));
 			
 		} catch (IOException e) {
 			
