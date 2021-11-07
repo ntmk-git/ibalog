@@ -33,11 +33,12 @@ ibalogは:rose:騒乱荊街でのログをHTML形式で保存するツールで�
 
 ## DemoSite
 
-[Ibalog](https://ibalog.herokuapp.com/)
+[Ibalog]~~(https://ibalog.herokuapp.com/)~~
+※騒乱荊街の終了に伴い停止しました。
 
 ## ログの取り方
 
-1. [Ibalog](https://ibalog.herokuapp.com/)にアクセスします。
+1. [Ibalog]~~(https://ibalog.herokuapp.com/)~~にアクセスします。
 1. 騒乱荊街のENOとパスワードを入力して、`LOGIN`します。
 1. ログの取得方法を選択します。プレイスNOかプレイスURLかツリーURLか選べます。
 	- プレイスNO...そのプレイスの投稿データを最初から取得します。
